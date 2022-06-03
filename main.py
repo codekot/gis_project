@@ -1,16 +1,11 @@
-import uvicorn
-
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from flask import Flask, render_template
 from content import index
 
-app = FastAPI()
+app=Flask(__name__)
 
+@app.route('/')
+def root():
+    return render_template(index)
 
-@app.get("/", response_class=HTMLResponse)
-def home():
-    return index
-
-if __name__ == "__main__":
-
-    uvicorn.run("main:app", reload=True)
+if __name__ == '__main__':
+    app.run(host="localhost", port=8080, debug=True)

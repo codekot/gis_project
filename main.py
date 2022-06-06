@@ -1,11 +1,11 @@
 from flask import Flask, render_template
-from content import index
+import config
 
 app=Flask(__name__)
 
 @app.route('/')
-def root():
-    return render_template("index.html")
+def home():
+    return render_template("index.html", map=True)
 
 if __name__ == '__main__':
-    app.run(host="localhost", port=8080, debug=True)
+    app.run(host="localhost", port=8080, debug=config.DEBUG)

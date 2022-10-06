@@ -7,8 +7,8 @@ app.config['TESTING'] = True
 
 @app.route('/')
 def home():
-    test_var = 'hello'
-    return render_template("index.html", test_var=test_var, map=True)
+    test_marker = [56.85036, 53247299]
+    return render_template("index.html", test_marker=test_marker, map=True)
 
 
 if __name__ == '__main__':

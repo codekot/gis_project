@@ -22,4 +22,9 @@
             .openOn(map);
     }
 
+    function onButtonClick(e) {
+        alert("Click");
+    }
+
     map.on('click', onMapClick);
+    document.getElementById("addMarker").onclick = onButtonClick

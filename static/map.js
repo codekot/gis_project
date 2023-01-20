@@ -4,9 +4,9 @@
     var map = L.map('map').setView(startPoint, startZoom);
 
     var osm = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
-    var terrain = L.tileLayer.provider('Stamen.Terrain').addTo(map);
-    var esriImage = L.tileLayer.provider('Esri.WorldImagery').addTo(map);
-    var esriTopo = L.tileLayer.provider('Esri.WorldTopoMap').addTo(map);
+    var terrain = L.tileLayer.provider('Stamen.Terrain');
+    var esriImage = L.tileLayer.provider('Esri.WorldImagery');
+    var esriTopo = L.tileLayer.provider('Esri.WorldTopoMap');
 
 //    var osmOld = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //        maxZoom: 19,

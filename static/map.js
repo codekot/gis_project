@@ -8,13 +8,6 @@
     var esriImage = L.tileLayer.provider('Esri.WorldImagery');
     var esriTopo = L.tileLayer.provider('Esri.WorldTopoMap');
 
-//    var osmOld = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//        maxZoom: 19,
-//        attribution: '© OpenStreetMap'
-//    }).addTo(map);
-
-    // add Stamen Watercolor to map.
-
 
     var baseMaps = {
     "OpenStreetMap": osm,
@@ -23,13 +16,6 @@
     "Esri Topo": esriTopo}
 
     var layerControl = L.control.layers(baseMaps).addTo(map);
-
-// Addition layer
-//    var ortho = L.geoPackageTileLayer([], {
-//     geoPackageUrl: '',
-//     layerName: 'ortho',
-//     style: {color: 'green'}
-//    }).addTo(map);
 
     var popup = L.popup();
 
@@ -49,9 +35,5 @@
         alert("Loading markers from csv file")
     }
 
-    // map.on('click', onMapClick);
-    //document.body.addEventListener("click", myFunction,{once:true})
-    //document.getElementById("addMarker").onclick = onButtonClick
-    //document.getElementById("addMarker").onclick = onButtonClick
     document.getElementById("addMarker").addEventListener("click", addMarker)
     document.getElementById("loadMarkers").addEventListener("click", loadMarkers)

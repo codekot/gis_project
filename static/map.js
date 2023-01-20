@@ -41,12 +41,9 @@
             .openOn(map);
     }
 
-    function addMarker() {
-       //map.on('click', onMapClick);
-       map.addEventListener("click", onMapClick,{once:true})
-       map.removeEventListener("click", onMapClick)
-       //onMapClick(e);
-    }
+ function addMarker() {
+    map.once("click", function(e){onMapClick(e)});
+}
 
     function loadMarkers() {
         alert("Loading markers from csv file")

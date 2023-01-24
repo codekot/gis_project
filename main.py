@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import config
 
 app = Flask(__name__)
@@ -10,6 +10,16 @@ def home():
     test_marker = [56.85036, 53247299]
     return render_template("index.html", test_marker=test_marker, map=True)
 
+
+@app.route('/upload_markers', methods=['POST'])
+def upload_markers():
+    file = request.files.get('file')
+    if file:
+        print("Uploading markers")
+        # process the file
+        return "Success!"
+    else:
+        return 'No file selected'
 
 if __name__ == '__main__':
     app.run(host="localhost", port=5500, debug=config.DEBUG)

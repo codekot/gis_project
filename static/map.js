@@ -29,15 +29,15 @@ function onMapClick(e) {
 
 
 function addMarker() {
-map.once("click", function(e){onMapClick(e)});
+    map.once("click", function(e){onMapClick(e)});
 }
 
 function loadMarkers() {
-    var data = document.getElementById("file");
-    var file = data.files[0]
+    var file = document.getElementById("file").files[0];
     var formData = new FormData();
     formData.append("file", file);
-    console.log(file)
+    console.log("Here is file object");
+    console.log(file);
 
     // validate file
     if (!file) {
@@ -50,22 +50,26 @@ function loadMarkers() {
         return;
     }
 
-    if (file.type !== "text/csv") {
+    /*if (file.type !== "text/csv" && file.type !== "text/plain") {
         alert("File type is not supported. Please choose a CSV file.");
-        return;
-    }
+    return;
+    }*/
 
-    /*fetch("/upload_markers", {
+    fetch("/upload_markers", {
         method: "POST",
         body: formData
     })
-    .then(response => response.text())
+    .then(function(response) {
+        console.log(response.text());
+        return response.text();
+    })
     .then(data => {
         // handle the response
+        // console.log(data)
     })
     .catch(error => {
         console.error('Error:', error);
-    });*/
+    });
 }
 
 document.getElementById("addMarker").addEventListener("click", addMarker)

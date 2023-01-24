@@ -1,3 +1,13 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    }
+
 #map {
     height: 600px;
+    background-color: #f5f5f5;
+    }
+
+.btn-primary{
+            background-color: #7f3f98;
+            color: white;
     }

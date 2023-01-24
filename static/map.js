@@ -39,6 +39,22 @@ function loadMarkers() {
     formData.append("file", file);
     console.log(file)
 
+    // validate file
+    if (!file) {
+        alert("Please select a file to upload.");
+        return;
+    }
+
+    if (file.size > 1000000) {
+        alert("File size is too large. Please choose a file under 1MB.");
+        return;
+    }
+
+    if (file.type !== "text/csv") {
+        alert("File type is not supported. Please choose a CSV file.");
+        return;
+    }
+
     /*fetch("/upload_markers", {
         method: "POST",
         body: formData

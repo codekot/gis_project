@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import config
 import pandas as pd
 from io import StringIO
@@ -25,8 +25,7 @@ def upload_markers():
         except pd.errors.ParserError:
             print("File is not in CSV format")
             return "File is not in CSV format"
-        # process the file
-        return "Success!"
+        return jsonify(data.to_dict())
     else:
         return 'No file selected'
 

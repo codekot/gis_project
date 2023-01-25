@@ -20,7 +20,7 @@ def upload_markers():
         print("Uploading markers")
         file_content = file.read()
         try:
-            data = pd.read_csv(StringIO(file_content.decode('utf-8')), header=None)
+            data = pd.read_csv(StringIO(file_content.decode('utf-8')))
             print(data)
         except pd.errors.ParserError:
             print("File is not in CSV format")

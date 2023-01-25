@@ -60,9 +60,9 @@ function loadMarkers() {
         body: formData
     })
     .then(function(response) {
-        console.log(response.text());
         return response.text();
     })
+    .then(text => console.log(text))
     .then(data => {
         // handle the response
         // console.log(data)

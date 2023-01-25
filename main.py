@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import config
+import pandas as pd
+from io import StringIO
 
 app = Flask(__name__)
 app.config['TESTING'] = True
@@ -16,6 +18,13 @@ def upload_markers():
     file = request.files.get('file')
     if file:
         print("Uploading markers")
+        file_content = file.read()
+        try:
+            data = pd.read_csv(StringIO(file_content.decode('utf-8')), header=None)
+            print(data)
+        except pd.errors.ParserError:
+            print("File is not in CSV format")
+            return "File is not in CSV format"
         # process the file
         return "Success!"
     else:

@@ -59,19 +59,16 @@ function loadMarkers() {
         method: "POST",
         body: formData
     })
-    .then(function(response) {
-        return response.text();
-    })
-    .then(text => console.log(text))
-    .then(data => {
-        // handle the response
-        // console.log(data)
+    .then(response => response.json())
+    .then(text => {
+    console.log(text);
     })
     .catch(error => {
         console.error('Error:', error);
+        alert(error.message);
     });
 }
 
-document.getElementById("addMarker").addEventListener("click", addMarker)
+document.getElementById("addMarker").addEventListener("click", addMarker);
 //document.getElementById("loadMarkers").addEventListener("click", loadMarkers)
-document.getElementById("file").addEventListener("change", loadMarkers)
+document.getElementById("file").addEventListener("change", loadMarkers);

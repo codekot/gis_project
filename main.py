@@ -22,12 +22,12 @@ def upload_markers():
         try:
             data = pd.read_csv(StringIO(file_content.decode('utf-8')))
             print(data)
-        except pd.errors.ParserError:
-            print("File is not in CSV format")
-            return "File is not in CSV format"
+        except Exception as e:
+            print(e)
+            return jsonify(error=str(e)), 400
         return jsonify(data.to_dict())
     else:
-        return 'No file selected'
+        return jsonify({"error": "No file selected"}), 400
 
 if __name__ == '__main__':
     app.run(host="localhost", port=5500, debug=config.DEBUG)

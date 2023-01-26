@@ -36,8 +36,6 @@ function loadMarkers() {
     var file = document.getElementById("file").files[0];
     var formData = new FormData();
     formData.append("file", file);
-    console.log("Here is file object");
-    console.log(file);
 
     // validate file
     if (!file) {
@@ -50,11 +48,6 @@ function loadMarkers() {
         return;
     }
 
-    /*if (file.type !== "text/csv" && file.type !== "text/plain") {
-        alert("File type is not supported. Please choose a CSV file.");
-    return;
-    }*/
-
     fetch("/upload_markers", {
         method: "POST",
         body: formData
@@ -66,7 +59,6 @@ function loadMarkers() {
             console.log(markerData);
             var marker = L.marker([markerData.Lat, markerData.Long]).addTo(map);
             marker.bindPopup(markerData.date + ' ' + markerData.status);
-            //markers.push(marker);
         });
     })
     .catch(error => {
@@ -76,5 +68,4 @@ function loadMarkers() {
 }
 
 document.getElementById("addMarker").addEventListener("click", addMarker);
-//document.getElementById("loadMarkers").addEventListener("click", loadMarkers)
 document.getElementById("file").addEventListener("change", loadMarkers);

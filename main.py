@@ -25,7 +25,7 @@ def upload_markers():
         except Exception as e:
             print(e)
             return jsonify(error=str(e)), 400
-        return jsonify(data.to_dict())
+        return jsonify(data.to_dict(orient="records"))
     else:
         return jsonify({"error": "No file selected"}), 400
 

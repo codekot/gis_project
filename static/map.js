@@ -60,8 +60,14 @@ function loadMarkers() {
         body: formData
     })
     .then(response => response.json())
-    .then(text => {
-    console.log(text);
+    .then(data => {
+        console.log(data);
+        data.forEach(function(markerData) {
+            console.log(markerData);
+            var marker = L.marker([markerData.Lat, markerData.Long]).addTo(map);
+            marker.bindPopup(markerData.date + ' ' + markerData.status);
+            //markers.push(marker);
+        });
     })
     .catch(error => {
         console.error('Error:', error);

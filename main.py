@@ -9,7 +9,6 @@ app.config['TESTING'] = True
 
 @app.route('/')
 def home():
-    test_marker = [56.85036, 53247299]
     return render_template("index.html", test_marker=test_marker, map=True)
 
 
@@ -28,6 +27,10 @@ def upload_markers():
         return jsonify(data.to_dict(orient="records"))
     else:
         return jsonify({"error": "No file selected"}), 400
+
+@app.route('/field_teams', methods=['GET','POST'])
+def field_teams():
+    return render_template("field_teams.html")
 
 if __name__ == '__main__':
     app.run(host="localhost", port=5500, debug=config.DEBUG)

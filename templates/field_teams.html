@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="team_name">Team Name:</label>
+      <input type="text" class="form-control" id="team_name" name="team_name">
+    </div>
+    <div class="form-group">
+      <label for="task_name">Task Name:</label>
+      <input type="text" class="form-control" id="task_name" name="task_name">
+    </div>
+    <div class="form-group">
+      <label for="task_status">Task Status:</label>
+      <select class="form-control" id="task_status" name="task_status">
+        <option value="Not started">Not started</option>
+        <option value="In progress">In progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="lat">Latitude:</label>
+      <input type="text" class="form-control" id="lat" name="lat">
+    </div>
+    <div class="form-group">
+      <label for="long">Longitude:</label>
+      <input type="text" class="form-control" id="long" name="long">
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="use_device_coordinates" name="use_device_coordinates">
+      <label class="form-check-label" for="use_device_coordinates">Use device coordinates</label>
+    </div>
+    <div class="form-group">
+      <label for="datetime">Date and Time:</label>
+      <input type="datetime-local" class="form-control" id="datetime" name="datetime">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<script src="{{ url_for('static', filename='field_teams.js') }}" /></script>
+{% endblock %}

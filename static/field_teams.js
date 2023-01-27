@@ -9,10 +9,10 @@ useDeviceCoordinates.addEventListener("change", function() {
     });
   }
 });
-document.getElementById("lat").addEventListener("change", (event) => {
+document.getElementById("lat").addEventListener("change", function() {
   useDeviceCoordinates.checked = false;
 });;
-document.getElementById("long").addEventListener("change", (event) => {
+document.getElementById("long").addEventListener("change", function() {
   useDeviceCoordinates.checked = false;
 });;
 

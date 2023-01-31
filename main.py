@@ -31,10 +31,14 @@ def upload_markers():
 @app.route('/field_teams', methods=['GET','POST'])
 def field_teams():
     if request.method == 'POST':
-        print("post request")
         latitude = request.form.get('lat')
         longitude = request.form.get('long')
         print(latitude, longitude)
+        success = True
+        if success:
+            return render_template("field_teams.html", success=success, message="Data uploaded")
+        else:
+            return render_template("field_teams.html", success=success, message="Error")
     return render_template("field_teams.html")
 
 if __name__ == '__main__':

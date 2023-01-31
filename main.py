@@ -34,7 +34,10 @@ def field_teams():
         latitude = request.form.get('lat')
         longitude = request.form.get('long')
         print(latitude, longitude)
-        success = True
+        if not latitude:
+            success = False
+        else:
+            success = True
         if success:
             return render_template("field_teams.html", success=success, message="Data uploaded")
         else:

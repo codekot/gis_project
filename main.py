@@ -9,7 +9,7 @@ app.config['TESTING'] = True
 
 @app.route('/')
 def home():
-    return render_template("index.html", test_marker=test_marker, map=True)
+    return render_template("index.html", map=True)
 
 
 @app.route('/upload_markers', methods=['POST'])
@@ -30,6 +30,11 @@ def upload_markers():
 
 @app.route('/field_teams', methods=['GET','POST'])
 def field_teams():
+    if request.method == 'POST':
+        print("post request")
+        latitude = request.form.get('lat')
+        longitude = request.form.get('long')
+        print(latitude, longitude)
     return render_template("field_teams.html")
 
 if __name__ == '__main__':

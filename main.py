@@ -2,9 +2,13 @@ from flask import Flask, render_template, request, jsonify
 import config
 import pandas as pd
 from io import StringIO
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['TESTING'] = True
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gis.db'
+db = SQLAlchemy(app)
+
 
 
 @app.route('/')
@@ -39,10 +43,14 @@ def field_teams():
         else:
             success = True
         if success:
-            return render_template("field_teams.html", success=success, message="Data uploaded")
+            return render_template("field_teams.html", success=success, message="Data uploaded. You can add another task")
         else:
-            return render_template("field_teams.html", success=success, message="Error")
+            return render_template("field_teams.html", success=success, message="Error. Please enter correct values")
     return render_template("field_teams.html")
+
+@app.route('/create_task', methods=['GET', 'POST'])
+def create_task():
+    return render_template('create_task.html')
 
 if __name__ == '__main__':
     app.run(host="localhost", port=5500, debug=config.DEBUG)

@@ -2,6 +2,15 @@
 
 {% block content %}
 <div class="container">
+      {% if success %}
+    <div class="alert alert-success" role="alert">
+      {{ message }}
+    </div>
+  {% elif success == False %}
+    <div class="alert alert-danger" role="alert">
+      {{ message }}
+    </div>
+  {% endif %}
     <h1 class="text-center">Create Task</h1>
     <form action="{{ url_for('create_task') }}" method="post">
       <div class="form-group">
@@ -39,4 +48,5 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
+<script src="{{ url_for('static', filename='field_teams.js') }}" /></script>
 {% endblock %}

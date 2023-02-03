@@ -50,6 +50,19 @@ def field_teams():
 
 @app.route('/create_task', methods=['GET', 'POST'])
 def create_task():
+    if request.method == 'POST':
+        latitude = request.form.get('lat')
+        longitude = request.form.get('long')
+        print(latitude, longitude)
+        if not latitude:
+            success = False
+        else:
+            success = True
+        if success:
+            return render_template("create_task.html", success=success, message="Data uploaded. You can add another task")
+        else:
+            return render_template("create_task.html", success=success, message="Error. Please enter correct values")
+
     return render_template('create_task.html')
 
 if __name__ == '__main__':

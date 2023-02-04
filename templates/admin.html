@@ -2,5 +2,28 @@
 
 {% block content %}
 <h1>Admin</h1>
+  <!-- Map component -->
+  <div id="map"></div>
 
+  <!-- Data table component -->
+  <table id="table">
+    <thead>
+      <tr>
+        <th>Task Name</th>
+        <th>Status</th>
+        <th>Coordinates</th>
+        <th>Date/Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in data %}
+      <tr>
+        <td>{{ task.name }}</td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.coordinates }}</td>
+        <td>{{ task.datetime }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}

@@ -65,5 +65,9 @@ def create_task():
 
     return render_template('create_task.html')
 
+@app.route('/admin', method=['GET', 'POST'])
+def admin():
+    return render_template('admin.html')
+
 if __name__ == '__main__':
     app.run(host="localhost", port=5500, debug=config.DEBUG)

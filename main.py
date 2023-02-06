@@ -65,7 +65,7 @@ def create_task():
 
     return render_template('create_task.html')
 
-@app.route('/admin', method=['GET', 'POST'])
+@app.route('/admin', methods=['GET', 'POST'])
 def admin():
     return render_template('admin.html')
 

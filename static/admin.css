@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container-map {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#map {
+    flex:1;
+    height: 100%;
+    background-color: #f5f5f5;
+    }
+
+#table {
+    flex: 1;
+    height: 100%;
+}

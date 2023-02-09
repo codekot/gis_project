@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+  {% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='map.css') }}" />
+  {% endblock %}
+
+
 {% block content %}
 <div class="d-flex justify-content-start">
     <button type="button" class="btn btn-primary mx-2" id="addMarker">Add Marker</button>

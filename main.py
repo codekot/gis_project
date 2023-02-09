@@ -65,5 +65,10 @@ def create_task():
 
     return render_template('create_task.html')
 
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    data = [{"name": "Task 1", "status": "not started", "coordinates": "51.55 57.33", "datetime": "12/11/2033"}]
+    return render_template('admin.html', map=True, data=data)
+
 if __name__ == '__main__':
     app.run(host="localhost", port=5500, debug=config.DEBUG)

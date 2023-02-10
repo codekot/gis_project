@@ -15,3 +15,30 @@ class Task(db.Model):
         self.latitude = latitude
         self.longitude = longitude
         self.date_time = date_time
+
+    def __repr__(self):
+        return (self.tast_name, self.status)
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self, task_name, status, latitude, longitude, date_time):
+        self.task_name = task_name
+        self.status = status
+        self.latitude = latitude
+        self.longitude = longitude
+        self.date_time = date_time
+        self.save()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    @classmethod
+    def find_all(cls):
+        return cls.query.all()
+
+    @classmethod
+    def find_by_id(cls, id):
+        return cls.query.get(id)

@@ -2,13 +2,15 @@ from flask import Flask, render_template, request, jsonify
 import config
 import pandas as pd
 from io import StringIO
-from flask_sqlalchemy import SQLAlchemy
+from database import db
+from models import Task
 
 app = Flask(__name__)
 app.config['TESTING'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gis.db'
-db = SQLAlchemy(app)
-
+db.init_app(app)
+with app.app_context():
+    db.create_all()
 
 
 @app.route('/')

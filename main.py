@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, render_template, request, jsonify
 import config
 import pandas as pd
@@ -54,8 +55,9 @@ def field_teams():
 def create_task():
     if request.method == 'POST':
         task_name = request.form.get("task_name")
+        print(task_name)
         task_status = request.form.get("task_status")
-        datetime = request.form.get("datetime")
+        date_time = datetime.strptime(request.form.get("datetime"), "%Y-%m-%dT%H:%M")
         latitude = request.form.get('lat')
         longitude = request.form.get('long')
         if not latitude:
@@ -67,7 +69,7 @@ def create_task():
                         status=task_status,
                         latitude=latitude,
                         longitude=longitude,
-                        date_time=datetime)
+                        date_time=date_time)
             task.save()
             return render_template("create_task.html", success=success, message="Data uploaded. You can add another task")
         else:

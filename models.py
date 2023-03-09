@@ -10,7 +10,7 @@ class Task(db.Model):
     date_time = db.Column(db.DateTime)
 
     def __init__(self, task_name, status, latitude, longitude, date_time):
-        self.tast_name = task_name
+        self.task_name = task_name
         self.status = status
         self.latitude = latitude
         self.longitude = longitude

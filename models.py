@@ -35,6 +35,16 @@ class Task(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'task_name': self.task_name,
+            'status': self.status,
+            'latitude': self.latitude,
+            'longitude': self.longitude,
+            'date_time': self.date_time.strftime('%Y-%m-%d %H:%M:%S') if self.date_time else None
+        }
+
     @classmethod
     def find_all(cls):
         return cls.query.all()

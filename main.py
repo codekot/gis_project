@@ -77,6 +77,12 @@ def create_task():
 
     return render_template('create_task.html')
 
+@app.route('/tasks/all')
+def get_all_tasks():
+    tasks = Task.find_all()
+    task_dict = [task.to_dict() for task in tasks]
+    return jsonify(task_dict)
+
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     data = [{"name": "Task 1", "status": "not started", "coordinates": "51.55 57.33", "datetime": "12/11/2033"}]

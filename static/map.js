@@ -67,5 +67,13 @@ function loadMarkers() {
     });
 }
 
+// Get all tasks
+fetch('/tasks/all')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+  })
+  .catch(error => console.error(error));
+
 document.getElementById("addMarker").addEventListener("click", addMarker);
 document.getElementById("file").addEventListener("change", loadMarkers);

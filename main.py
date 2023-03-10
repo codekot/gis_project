@@ -55,7 +55,6 @@ def field_teams():
 def create_task():
     if request.method == 'POST':
         task_name = request.form.get("task_name")
-        print(task_name)
         task_status = request.form.get("task_status")
         date_time = datetime.strptime(request.form.get("datetime"), "%Y-%m-%dT%H:%M")
         latitude = request.form.get('lat')
@@ -85,8 +84,8 @@ def get_all_tasks():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    data = [{"name": "Task 1", "status": "not started", "coordinates": "51.55 57.33", "datetime": "12/11/2033"}]
-    return render_template('admin.html', map=True, data=data)
+    # data = [{"name": "Task 100", "status": "not started", "coordinates": "51.55 57.33", "datetime": "12/11/2033"}]
+    return render_template('admin.html', map=True)
 
 if __name__ == '__main__':
     app.run(host="localhost", port=5500, debug=config.DEBUG)

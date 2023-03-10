@@ -72,6 +72,10 @@ fetch('/tasks/all')
   .then(response => response.json())
   .then(data => {
     console.log(data)
+    data.forEach(function(markerData) {
+            var marker = L.marker([markerData.latitude, markerData.longitude]).addTo(map);
+            marker.bindPopup(markerData.date + ' ' + markerData.status);
+        });
   })
   .catch(error => console.error(error));
 

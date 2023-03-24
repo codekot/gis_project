@@ -24,13 +24,18 @@ function getAndDrawTasks(){
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        const dataArray = data.map(obj => [obj.id, obj.name, obj.status, obj.latitude, obj.longitude]);
+        const dataArray = data.map(obj => [obj.id, obj.task_name, obj.status, obj.latitude, obj.longitude]);
         //const dataParsed = JSON.parse(data);
         table.rows.add(dataArray).draw();
        })
 }
 
 $(document).ready(function () {
-    table = $('#table').DataTable();
+    table = $('#table').DataTable({
+    columnDefs: [{
+      targets: 0, // index of the column to hide
+      visible: false
+    }]
+  });
     getAndDrawTasks();
 })

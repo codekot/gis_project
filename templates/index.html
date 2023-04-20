@@ -7,10 +7,16 @@
 
 {% block content %}
 <div class="d-flex justify-content-start">
-    <button type="button" class="btn btn-primary mx-2" id="addMarker">Add Marker</button>
+    <a href="{{ url_for('admin') }}">
+        <button type="button" class="btn btn-primary mx-2" >Admin</button>
+    </a>
+     <a href="{{ url_for('create_task') }}">
+        <button type="button" class="btn btn-primary mx-2" >Create Task</button>
+    </a>
+    <button type="button" class="btn btn-primary mx-2" id="addMarker" hidden>Add Marker</button>
     <form>
         <input type="file" id="file" name="file" style="display:none;">
-        <button type="button" class="btn btn-primary mx-2" id="loadMarkers" onclick="document.getElementById('file').click()">Upload Markers</button>
+        <button type="button" class="btn btn-primary mx-2" id="loadMarkers" onclick="document.getElementById('file').click()" hidden>Upload Markers</button>
     </form>
 </div>
 <div id="map"></div>
